@@ -14,8 +14,10 @@ public class PalindromeCheckerApp{
             start++;
             end--;
         }
+        https://github.com/NavyaAgarwal27/PalindromeCheckerApp/tree/UC4-ArrayBased
 
-        if (isPalindrome) {
+        if (isPalindrome)
+        {
             System.out.println("The given string \"" + word + "\" is a Palindrome.");
         } else {
             System.out.println("The given string \"" + word + "\" is not a Palindrome.");
