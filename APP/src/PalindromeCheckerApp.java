@@ -1,16 +1,17 @@
-public class PalindromeCheckerApp{
+public class PalindromeCheckerApp {
     public static void main(String[] args) {
-        String word = "noon";
-        if (isPalindrome(word, 0, word.length() - 1)) {
-            System.out.println("The given string \"" + word + "\" is a Palindrome.");
-        } else {
-            System.out.println("The given string \"" + word + "\" is not a Palindrome.");
-        }
-    }
+        String original = "A man a plan a canal Panama";
+        String normalized = original.replaceAll("\\s+", "").toLowerCase();
+        String reversed = "";
 
-    private static boolean isPalindrome(String s, int start, int end) {
-        if (start >= end) return true;
-        if (s.charAt(start) != s.charAt(end)) return false;
-        return isPalindrome(s, start + 1, end - 1);
+        for (int i = normalized.length() - 1; i >= 0; i--) {
+            reversed = reversed + normalized.charAt(i);
+        }
+
+        if (normalized.equals(reversed)) {
+            System.out.println("The given string \"" + original + "\" is a Palindrome.");
+        } else {
+            System.out.println("The given string \"" + original + "\" is not a Palindrome.");
+        }
     }
 }
