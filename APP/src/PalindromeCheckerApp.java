@@ -1,16 +1,43 @@
-public class PalindromeCheckerApp{
-    public static void main(String[] args) {
-        String word = "noon";
-        if (isPalindrome(word, 0, word.length() - 1)) {
-            System.out.println("The given string \"" + word + "\" is a Palindrome.");
-        } else {
-            System.out.println("The given string \"" + word + "\" is not a Palindrome.");
-        }
-    }
+import java.util.Deque;
+import java.util.LinkedList;
+import java.util.Stack;
 
-    private static boolean isPalindrome(String s, int start, int end) {
-        if (start >= end) return true;
-        if (s.charAt(start) != s.charAt(end)) return false;
-        return isPalindrome(s, start + 1, end - 1);
+public class PalindromeCheckerApp {
+    public static void main(String[] args) {
+        String word = "civic";
+
+        PalindromeStrategy strategy;
+
+        strategy = new StackStrategy();
+        System.out.println("Using StackStrategy: " + (strategy.isPalindrome(word) ? "Palindrome" : "Not Palindrome"));
+
+        strategy = new DequeStrategy();
+        System.out.println("Using DequeStrategy: " + (strategy.isPalindrome(word) ? "Palindrome" : "Not Palindrome"));
     }
 }
+
+interface PalindromeStrategy {
+    boolean isPalindrome(String word);
+}
+
+class StackStrategy implements PalindromeStrategy {
+    public boolean isPalindrome(String word) {
+        Stack<Character> stack = new Stack<>();
+        for (char c : word.toCharArray()) stack.push(c);
+
+        for (char c : word.toCharArray()) {
+            if (c != stack.pop()) return false;
+        }
+        return true;
+    }
+}
+
+class DequeStrategy implements PalindromeStrategy {
+    public boolean isPalindrome(String word) {
+        Deque<Character> deque = new LinkedList<>();
+        for (char c : word.toCharArray()) deque.addLast(c);
+
+        while (deque.size() > 1) {
+            if (!deque.removeFirst().equals(deque.removeLast())) return false;
+        }
+        return true;}}
