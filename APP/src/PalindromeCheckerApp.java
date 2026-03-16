@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class PalindromeCheckerApp {
 
-    // Method 1: Reverse String Method
+    // Method 1: Reverse String
     public static boolean checkPalindromeReverse(String str) {
         String rev = "";
         for (int i = str.length() - 1; i >= 0; i--) {
@@ -40,7 +40,7 @@ public class PalindromeCheckerApp {
         System.out.print("Enter a string: ");
         String input = sc.nextLine();
 
-        int runs = 1000; // number of executions for comparison
+        int runs = 1000;
 
         long start1 = System.nanoTime();
         for (int i = 0; i < runs; i++) {
@@ -61,7 +61,6 @@ public class PalindromeCheckerApp {
         long end3 = System.nanoTime();
 
         System.out.println("\n--- Performance Comparison ---");
-
         System.out.println("Reverse Method Time: " + (end1 - start1) + " ns");
         System.out.println("Two Pointer Method Time: " + (end2 - start2) + " ns");
         System.out.println("StringBuilder Method Time: " + (end3 - start3) + " ns");
